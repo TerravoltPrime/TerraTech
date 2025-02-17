@@ -173,6 +173,10 @@ publishing {
         maven {
             url "file://${project.projectDir}/repo"
         }
+        maven {
+            name = "Curios"
+            url = uri("https://maven.theillusivec4.top/")
+        }
     }
 }
 
