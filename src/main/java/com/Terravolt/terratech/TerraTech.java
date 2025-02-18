@@ -138,7 +138,7 @@ public class TerraTech
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            CuriosRendererRegistry.register(ItemRegistry.BLASTER.get(), BlasterCurioRender::new);
+            CuriosRendererRegistry.register(ItemRegistry.BLASTER.get(), BlasterRenderMain::new);
 
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");

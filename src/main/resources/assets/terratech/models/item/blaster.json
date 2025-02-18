@@ -3,7 +3,7 @@
 	"parent": "hands",
 	"texture_size": [32, 32],
 	"textures": {
-		"1": "resources/assets/terratech/textures/item/blaster"
+		"1": "assets/terratech/textures/item/blaster"
 	},
 	"elements": [
 		{
