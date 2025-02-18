@@ -1,5 +1,6 @@
-package com.Terravolt.TerraTech;
+package com.Terravolt.terratech;
 
+import com.Terravolt.terratech.registry.ItemRegistry;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -33,11 +34,14 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(TerraTech.MODID)
 public class TerraTech
 {
+
+
     // Define mod id in a common place for everything to reference
     public static final String MODID = "terratech";
     // Directly reference a slf4j logger
@@ -55,22 +59,27 @@ public class TerraTech
     public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("example_block", EXAMPLE_BLOCK);
 
     // Creates a new food item with the id "terratech:example_id", nutrition 1 and saturation 2
-    public static final DeferredItem<Item> EXAMPLE_ITEM = ITEMS.registerSimpleItem("example_item", new Item.Properties().food(new FoodProperties.Builder()
+    public static final DeferredItem<Item> BLASTER = ITEMS.registerSimpleItem("blaster", new Item.Properties().food(new FoodProperties.Builder()
             .alwaysEdible().nutrition(1).saturationModifier(2f).build()));
 
-    // Creates a creative tab with the id "terratech:terratech" for the example item, that is placed after the combat tab
+
+
+
+            // Creates a creative tab with the id "terratech:terratech" for the example item, that is placed after the combat tab
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("terratech", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.terratech")) //The language key for the title of your CreativeModeTab
             .withTabsBefore(CreativeModeTabs.COMBAT)
-            .icon(() -> EXAMPLE_ITEM.get().getDefaultInstance())
+            .icon(() -> BLASTER.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
-                output.accept(EXAMPLE_ITEM.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
+                output.accept(BLASTER.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
             }).build());
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public TerraTech(IEventBus modEventBus, ModContainer modContainer)
     {
+
+
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
@@ -124,10 +133,13 @@ public class TerraTech
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents
+
     {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+            CuriosRendererRegistry.register(ItemRegistry.BLASTER.get(), BlasterCurioRender::new);
+
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());

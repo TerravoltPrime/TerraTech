@@ -1,4 +1,4 @@
-package com.Terravolt.TerraTech;
+package com.Terravolt.terratech;
 
 import java.util.List;
 import java.util.Set;
