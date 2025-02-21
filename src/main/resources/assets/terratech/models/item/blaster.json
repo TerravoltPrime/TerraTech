@@ -7,9 +7,9 @@
 	},
 	"elements": [
 		{
-			"from": [8, 0, 6],
-			"to": [9, 2, 8],
-			"rotation": {"angle": 0, "axis": "y", "origin": [7.5, 2.5, 7.5]},
+			"from": [8.5, 0, 6.5],
+			"to": [9.5, 2, 8.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 2.5, 8]},
 			"faces": {
 				"north": {"uv": [2, 11, 3, 13], "texture": "#2"},
 				"east": {"uv": [0, 11, 2, 13], "texture": "#2"},
@@ -20,9 +20,9 @@
 			}
 		},
 		{
-			"from": [7, 0, 8],
-			"to": [9, 2, 9],
-			"rotation": {"angle": 0, "axis": "y", "origin": [7.5, 2.5, 7.5]},
+			"from": [7.5, 0, 8.5],
+			"to": [9.5, 2, 9.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 2.5, 8]},
 			"faces": {
 				"north": {"uv": [7, 10, 9, 12], "texture": "#2"},
 				"east": {"uv": [6, 10, 7, 12], "texture": "#2"},
@@ -33,9 +33,9 @@
 			}
 		},
 		{
-			"from": [6, 0, 7],
-			"to": [7, 2, 9],
-			"rotation": {"angle": 0, "axis": "y", "origin": [7.5, 2.5, 7.5]},
+			"from": [6.5, 0, 7.5],
+			"to": [7.5, 2, 9.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 2.5, 8]},
 			"faces": {
 				"north": {"uv": [2, 11, 3, 13], "texture": "#2"},
 				"east": {"uv": [0, 11, 2, 13], "texture": "#2"},
@@ -46,9 +46,9 @@
 			}
 		},
 		{
-			"from": [6, 0, 6],
-			"to": [8, 2, 7],
-			"rotation": {"angle": 0, "axis": "y", "origin": [7.5, 2.5, 7.5]},
+			"from": [6.5, 0, 6.5],
+			"to": [8.5, 2, 7.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 2.5, 8]},
 			"faces": {
 				"north": {"uv": [7, 10, 9, 12], "texture": "#2"},
 				"east": {"uv": [6, 10, 7, 12], "texture": "#2"},
@@ -59,9 +59,9 @@
 			}
 		},
 		{
-			"from": [5.5, 1.5, 5.5],
-			"to": [9.5, 6.5, 9.5],
-			"rotation": {"angle": 0, "axis": "y", "origin": [7.5, 2.5, 7.5]},
+			"from": [6, 1.5, 6],
+			"to": [10, 6.5, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 2.5, 8]},
 			"faces": {
 				"north": {"uv": [4, 4, 8, 9], "texture": "#2"},
 				"east": {"uv": [0, 4, 4, 9], "texture": "#2"},
@@ -75,11 +75,11 @@
 	"display": {
 		"thirdperson_righthand": {
 			"rotation": [90, 0, 0],
-			"translation": [0.5, -2.5, 5.75]
+			"translation": [0, -2, 6.75]
 		},
 		"thirdperson_lefthand": {
 			"rotation": [90, 0, 0],
-			"translation": [-2.0, -2.5, 5.75]
+			"translation": [0, -2, 6.75]
 		},
 		"ground": {
 			"rotation": [-180, 0, 0]

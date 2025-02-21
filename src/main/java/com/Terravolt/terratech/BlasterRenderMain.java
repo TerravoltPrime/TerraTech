@@ -43,6 +43,7 @@ public class BlasterRenderMain implements ICurioRenderer {
                 matrixStack.mulPose(Axis.YP.rotationDegrees(180.0F));
 
                 matrixStack.translate((float)(bl ? -1 : 1) / 16.0F, 0.125F, -0.625F);
+                matrixStack.scale(1.1F, 1.1F, 1.1F);
 
                 Minecraft.getInstance().getItemRenderer().renderStatic(slotContext.entity(), stack, ItemDisplayContext.THIRD_PERSON_RIGHT_HAND
                         , bl, matrixStack, renderTypeBuffer, slotContext.entity().level(), light, OverlayTexture.NO_OVERLAY, slotContext.entity().getId() + ItemDisplayContext.THIRD_PERSON_RIGHT_HAND.ordinal());
@@ -50,8 +51,8 @@ public class BlasterRenderMain implements ICurioRenderer {
             }            // do stuff if it's in the first slot
         } else {
             HumanoidArm arm = HumanoidArm.LEFT;
-            if(slotContext.entity().getMainArm() != HumanoidArm.LEFT){
-                arm = HumanoidArm.LEFT;
+            if (slotContext.index() == 1) {
+                arm = HumanoidArm.RIGHT;
             }
             boolean bl = slotContext.entity().getMainArm() != arm; //false if only right hand
 
@@ -69,7 +70,8 @@ public class BlasterRenderMain implements ICurioRenderer {
                 matrixStack.mulPose(Axis.XP.rotationDegrees(-90.0F));
                 matrixStack.mulPose(Axis.YP.rotationDegrees(180.0F));
 
-                matrixStack.translate( 0.1F, 0.125F, -0.625F);
+                matrixStack.translate((float)(bl ? -1 : 1) / 16.0F, 0.125F, -0.625F);
+                matrixStack.scale(1.2F, 1.2F, 1.2F);
 
                 Minecraft.getInstance().getItemRenderer().renderStatic(slotContext.entity(), stack, ItemDisplayContext.THIRD_PERSON_LEFT_HAND
                         , bl, matrixStack, renderTypeBuffer, slotContext.entity().level(), light, OverlayTexture.NO_OVERLAY, slotContext.entity().getId() + ItemDisplayContext.THIRD_PERSON_LEFT_HAND.ordinal());
