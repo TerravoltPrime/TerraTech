@@ -22,28 +22,29 @@ public class BlasterRenderMain implements ICurioRenderer {
             matrixStack, RenderLayerParent<T, M> renderLayerParent, MultiBufferSource renderTypeBuffer, int light
             , float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch)  {
         if (slotContext.index() == 0) {
-            HumanoidArm arm = HumanoidArm.RIGHT;
-            if(slotContext.entity().getMainArm() != HumanoidArm.RIGHT){
-                arm = HumanoidArm.LEFT;
+            HumanoidArm arm = HumanoidArm.LEFT;
+            if(slotContext.entity().getMainArm() != HumanoidArm.LEFT){
+                arm = HumanoidArm.RIGHT;
             }
+
             boolean bl = slotContext.entity().getMainArm() != arm; //false if only right hand
+
 
             if (!stack.isEmpty()) {
                 matrixStack.pushPose();
-                if (renderLayerParent.getModel().young) {
-                    float m = 0.5F;
-                    matrixStack.translate(0.0F, 0.75F, 0.0F);
-                    matrixStack.scale(0.5F, 0.5F, 0.5F);
-                }
+//                if (renderLayerParent.getModel().young) {
+//                }
 
                 if(renderLayerParent.getModel() instanceof ArmedModel model){
                     model.translateToHand(HumanoidArm.RIGHT, matrixStack);
                 }
+
                 matrixStack.mulPose(Axis.XP.rotationDegrees(-90.0F));
                 matrixStack.mulPose(Axis.YP.rotationDegrees(180.0F));
+//
+                matrixStack.translate(0.055, 0.125F, -0.625F);
 
-                matrixStack.translate((float)(bl ? -1 : 1) / 16.0F, 0.125F, -0.625F);
-                matrixStack.scale(1.1F, 1.1F, 1.1F);
+
 
                 Minecraft.getInstance().getItemRenderer().renderStatic(slotContext.entity(), stack, ItemDisplayContext.THIRD_PERSON_RIGHT_HAND
                         , bl, matrixStack, renderTypeBuffer, slotContext.entity().level(), light, OverlayTexture.NO_OVERLAY, slotContext.entity().getId() + ItemDisplayContext.THIRD_PERSON_RIGHT_HAND.ordinal());
@@ -58,25 +59,24 @@ public class BlasterRenderMain implements ICurioRenderer {
 
             if (!stack.isEmpty()) {
                 matrixStack.pushPose();
-                if (renderLayerParent.getModel().young) {
-                    float m = 0.5F;
-                    matrixStack.translate(0.0F, 0.75F, 0.0F);
-                    matrixStack.scale(0.5F, 0.5F, 0.5F);
-                }
+//                if (renderLayerParent.getModel().young) {
+//                }
 
                 if(renderLayerParent.getModel() instanceof ArmedModel model){
                     model.translateToHand(HumanoidArm.LEFT, matrixStack);
                 }
+
                 matrixStack.mulPose(Axis.XP.rotationDegrees(-90.0F));
                 matrixStack.mulPose(Axis.YP.rotationDegrees(180.0F));
+//
+               matrixStack.translate(-0.055, 0.125F, -0.625F);
 
-                matrixStack.translate((float)(bl ? -1 : 1) / 16.0F, 0.125F, -0.625F);
-                matrixStack.scale(1.2F, 1.2F, 1.2F);
 
-                Minecraft.getInstance().getItemRenderer().renderStatic(slotContext.entity(), stack, ItemDisplayContext.THIRD_PERSON_LEFT_HAND
-                        , bl, matrixStack, renderTypeBuffer, slotContext.entity().level(), light, OverlayTexture.NO_OVERLAY, slotContext.entity().getId() + ItemDisplayContext.THIRD_PERSON_LEFT_HAND.ordinal());
+
+
+                Minecraft.getInstance().getItemRenderer().renderStatic(slotContext.entity(), stack, ItemDisplayContext.THIRD_PERSON_RIGHT_HAND
+                        , bl, matrixStack, renderTypeBuffer, slotContext.entity().level(), light, OverlayTexture.NO_OVERLAY, slotContext.entity().getId() + ItemDisplayContext.THIRD_PERSON_RIGHT_HAND.ordinal());
                 matrixStack.popPose();
-            }
         }
     }
-}
+}}
