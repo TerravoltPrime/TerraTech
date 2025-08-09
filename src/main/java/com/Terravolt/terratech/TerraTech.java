@@ -1,6 +1,9 @@
 package com.Terravolt.terratech;
 
+import com.Terravolt.terratech.entity.LaserBoltRenderer;
+import com.Terravolt.terratech.entity.ModEntities;
 import com.Terravolt.terratech.registry.ItemRegistry;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -65,7 +68,7 @@ public class TerraTech
 
 
 
-            // Creates a creative tab with the id "terratech:terratech" for the example item, that is placed after the combat tab
+    // Creates a creative tab with the id "terratech:terratech" for the example item, that is placed after the combat tab
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("terratech", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.terratech")) //The language key for the title of your CreativeModeTab
             .withTabsBefore(CreativeModeTabs.COMBAT)
@@ -82,6 +85,7 @@ public class TerraTech
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
+        ModEntities.register(modEventBus);
 
         // Register the Deferred Register to the mod event bus so blocks get registered
         BLOCKS.register(modEventBus);
@@ -135,11 +139,12 @@ public class TerraTech
     public static class ClientModEvents
 
     {
+
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             CuriosRendererRegistry.register(ItemRegistry.BLASTER.get(), BlasterRenderMain::new);
-
+            EntityRenderers.register(ModEntities.LASER_BOLT.get(), LaserBoltRenderer::new);
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());

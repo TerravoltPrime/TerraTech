@@ -2,6 +2,7 @@ package com.Terravolt.terratech.registry;
 
 import com.Terravolt.terratech.TerraTech;
 import net.minecraft.world.item.Item;
+import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -11,4 +12,6 @@ public class ItemRegistry {
             "blaster",
             Item::new, // The factory that the properties will be passed into.
             new Item.Properties());
+
+
 }
