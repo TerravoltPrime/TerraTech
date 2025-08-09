@@ -12,11 +12,11 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 
-public class laserBoltRenderer extends EntityRenderer<LaserBolt> {
+public class LaserBoltRenderer extends EntityRenderer<LaserBolt> {
     private static final ResourceLocation TEXTURE_LOCATION = ResourceLocation.withDefaultNamespace("textures/entity/enderdragon/dragon_fireball.png");
     private static final RenderType RENDER_TYPE = RenderType.entityCutoutNoCull(TEXTURE_LOCATION);
 
-    public laserBoltRenderer(EntityRendererProvider.Context context) {
+    public LaserBoltRenderer(EntityRendererProvider.Context context) {
         super(context);
     }
 
