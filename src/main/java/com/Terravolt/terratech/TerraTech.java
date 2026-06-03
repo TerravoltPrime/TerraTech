@@ -37,7 +37,6 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(TerraTech.MODID)
@@ -143,7 +142,9 @@ public class TerraTech
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            CuriosRendererRegistry.register(ItemRegistry.BLASTER.get(), BlasterRenderMain::new);
+           // CuriosRendererRegistry.register(ItemRegistry.BLASTER.get(), BlasterRenderRight::new);
+
+         //   CuriosRendererRegistry.register(ItemRegistry.BLASTER.get(), BlasterRenderLeft::new);
             EntityRenderers.register(ModEntities.LASER_BOLT.get(), LaserBoltRenderer::new);
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
