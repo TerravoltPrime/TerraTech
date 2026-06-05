@@ -3,6 +3,7 @@ package com.Terravolt.terratech;
 import com.Terravolt.terratech.entity.LaserBoltRenderer;
 import com.Terravolt.terratech.entity.ModEntities;
 import com.Terravolt.terratech.registry.ItemRegistry;
+import io.wispforest.accessories.api.client.AccessoriesRendererRegistry;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import org.slf4j.Logger;
 
@@ -144,7 +145,7 @@ public class TerraTech
         {
            // CuriosRendererRegistry.register(ItemRegistry.BLASTER.get(), BlasterRenderRight::new);
 
-         //   CuriosRendererRegistry.register(ItemRegistry.BLASTER.get(), BlasterRenderLeft::new);
+            AccessoriesRendererRegistry.registerRenderer(ItemRegistry.BLASTER.get(), BlasterRender::new);
             EntityRenderers.register(ModEntities.LASER_BOLT.get(), LaserBoltRenderer::new);
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
