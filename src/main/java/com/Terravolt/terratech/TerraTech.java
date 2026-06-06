@@ -3,8 +3,11 @@ package com.Terravolt.terratech;
 import com.Terravolt.terratech.entity.LaserBoltRenderer;
 import com.Terravolt.terratech.entity.ModEntities;
 import com.Terravolt.terratech.registry.ItemRegistry;
+import cpw.mods.util.Lazy;
 import io.wispforest.accessories.api.client.AccessoriesRendererRegistry;
+import net.minecraft.client.KeyMapping;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -38,6 +41,10 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.function.Consumer;
+
+import static com.Terravolt.terratech.keymaps.keymaps.BLASTER_READY;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(TerraTech.MODID)
@@ -106,6 +113,7 @@ public class TerraTech
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
+
     private void commonSetup(final FMLCommonSetupEvent event)
     {
         // Some common setup code
@@ -145,11 +153,11 @@ public class TerraTech
         {
            // CuriosRendererRegistry.register(ItemRegistry.BLASTER.get(), BlasterRenderRight::new);
 
-            AccessoriesRendererRegistry.registerRenderer(ItemRegistry.BLASTER.get(), BlasterRender::new);
+            AccessoriesRendererRegistry.registerRenderer(TerraTech.BLASTER.get(), BlasterRender::new);
             EntityRenderers.register(ModEntities.LASER_BOLT.get(), LaserBoltRenderer::new);
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
-    }
-}
+
+}}

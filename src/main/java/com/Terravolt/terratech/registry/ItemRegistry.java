@@ -8,10 +8,10 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ItemRegistry {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(TerraTech.MODID);
-    public static final DeferredItem<Item> BLASTER = ITEMS.registerItem(
-            "blaster",
-            Item::new, // The factory that the properties will be passed into.
-            new Item.Properties());
+//    public static final DeferredItem<Item> BLASTER = ITEMS.registerItem(
+//            "blaster",
+//            Item::new, // The factory that the properties will be passed into.
+//            new Item.Properties());
 
 
 }

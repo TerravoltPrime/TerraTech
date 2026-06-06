@@ -48,8 +48,11 @@ public class BlasterRender implements AccessoryRenderer {
 
             if (mainHandArm == HumanoidArm.RIGHT) {
                 poseStack.translate(-1.0F / 16.0F, 1.0F / 8.0F, 3.0F / 16.0F);
+                poseStack.scale(1.4F, 1.4F, 1.4F);
             } else {
                 poseStack.translate(1.0F / 16.0F, 1.0F / 8.0F, 3.0F / 16.0F);
+                poseStack.scale(1.4F, 1.4F, 1.4F);
+
             }
         }
 
