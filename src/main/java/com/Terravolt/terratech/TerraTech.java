@@ -2,12 +2,14 @@ package com.Terravolt.terratech;
 
 import com.Terravolt.terratech.entity.LaserBoltRenderer;
 import com.Terravolt.terratech.entity.ModEntities;
+import com.Terravolt.terratech.keymaps.blaster_keys;
 import com.Terravolt.terratech.registry.ItemRegistry;
-import cpw.mods.util.Lazy;
+import com.mojang.blaze3d.platform.InputConstants;
 import io.wispforest.accessories.api.client.AccessoriesRendererRegistry;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
+import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -44,12 +46,18 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Consumer;
 
-import static com.Terravolt.terratech.keymaps.keymaps.BLASTER_READY;
+import static com.Terravolt.terratech.keymaps.blaster_keys.BLASTER_READY;
+
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(TerraTech.MODID)
 public class TerraTech
 {
+
+
+
+
+
 
 
     // Define mod id in a common place for everything to reference
@@ -141,7 +149,10 @@ public class TerraTech
         // Do something when the server starts
         LOGGER.info("HELLO from server starting");
     }
-
+    @SubscribeEvent // on the mod event bus only on the physical client
+    public  void registerBindings(RegisterKeyMappingsEvent event) {
+        event.register(BLASTER_READY.get());
+    }
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents
