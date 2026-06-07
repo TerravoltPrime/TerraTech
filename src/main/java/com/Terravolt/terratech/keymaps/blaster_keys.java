@@ -8,13 +8,12 @@ import net.neoforged.neoforge.common.util.Lazy;
 public class blaster_keys {
 
 
-    public static final Lazy<KeyMapping> BLASTER_READY = Lazy.of(() ->
-            new KeyMapping(
-            "key.examplemod.example1", // Will be localized using this translation key
-            InputConstants.Type.KEYSYM, // Default mapping is on the keyboard
-            GLFW.GLFW_KEY_P, // Default key is P
-            "key.categories.misc" // Mapping will be in the misc category
-    )
+    public static final KeyMapping BLASTER_READY = new KeyMapping(
+            "key.your_mod_id.my_action", // Translation key for the Controls menu
+            InputConstants.Type.KEYSYM,  // Type of input (Key / Mouse)
+            GLFW.GLFW_KEY_P,             // Default key (e.g., 'P')
+            "key.categories.your_mod_id" // Category in the controls menu
     );
+
 
 }

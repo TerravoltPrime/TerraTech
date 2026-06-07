@@ -9,6 +9,7 @@ import io.wispforest.accessories.api.client.AccessoriesRendererRegistry;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
+import net.neoforged.neoforge.client.settings.KeyConflictContext;
 import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 
@@ -149,10 +150,6 @@ public class TerraTech
         // Do something when the server starts
         LOGGER.info("HELLO from server starting");
     }
-    @SubscribeEvent // on the mod event bus only on the physical client
-    public  void registerBindings(RegisterKeyMappingsEvent event) {
-        event.register(BLASTER_READY.get());
-    }
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents
@@ -162,7 +159,7 @@ public class TerraTech
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-           // CuriosRendererRegistry.register(ItemRegistry.BLASTER.get(), BlasterRenderRight::new);
+            // CuriosRendererRegistry.register(ItemRegistry.BLASTER.get(), BlasterRenderRight::new);
 
             AccessoriesRendererRegistry.registerRenderer(TerraTech.BLASTER.get(), BlasterRender::new);
             EntityRenderers.register(ModEntities.LASER_BOLT.get(), LaserBoltRenderer::new);
@@ -171,4 +168,15 @@ public class TerraTech
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
 
-}}
+
+        @EventBusSubscriber(modid = TerraTech.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
+        public class KeyMapping {
+            public static final String RESKILLABLE_CATEGORY = "key." + TerraTech.MODID + ".category";
+            public static final net.minecraft.client.KeyMapping openKey = new net.minecraft.client.KeyMapping("key." + TerraTech.MODID + ".open_skills", KeyConflictContext.IN_GAME,
+                    InputConstants.getKey(InputConstants.KEY_G, -1), RESKILLABLE_CATEGORY);
+
+        @SubscribeEvent
+        public static void registerKeyMappingsEvent(RegisterKeyMappingsEvent event) {
+            event.register(BLASTER_READY);
+        }
+    }}}
