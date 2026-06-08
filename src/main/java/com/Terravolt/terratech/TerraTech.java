@@ -47,7 +47,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Consumer;
 
-import static com.Terravolt.terratech.keymaps.blaster_keys.BLASTER_READY;
+import static com.Terravolt.terratech.keymaps.blaster_keys.*;
 
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
@@ -171,12 +171,18 @@ public class TerraTech
 
         @EventBusSubscriber(modid = TerraTech.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
         public class KeyMapping {
-            public static final String RESKILLABLE_CATEGORY = "key." + TerraTech.MODID + ".category";
+            public static final String TERRATECH_CONTROLLS = "key." + TerraTech.MODID + ".category";
             public static final net.minecraft.client.KeyMapping openKey = new net.minecraft.client.KeyMapping("key." + TerraTech.MODID + ".open_skills", KeyConflictContext.IN_GAME,
-                    InputConstants.getKey(InputConstants.KEY_G, -1), RESKILLABLE_CATEGORY);
+                    InputConstants.getKey(InputConstants.KEY_G, -1), TERRATECH_CONTROLLS);
+
+
+
 
         @SubscribeEvent
+
         public static void registerKeyMappingsEvent(RegisterKeyMappingsEvent event) {
             event.register(BLASTER_READY);
+            event.register(BLASTER_CONFIGURE);
+            event.register(BLASTER_FIRE);
         }
     }}}
